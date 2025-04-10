@@ -2,7 +2,20 @@ name: Events Demo 1
 on:
   pull_request:
     types: [opened]
+    branches:
+      - main # main
+      - 'dev-*' # dev-new dev-this-is-new
+      - 'fear/**' # feat/new feat/new/button
+      # developer-1 will not be triggered
   workflow_dispatch:
+  push:
+    branches:
+      - main # main
+      - 'dev-*' # dev-new dev-this-is-new
+      - 'fear/**' # feat/new feat/new/button
+      # developer-1 will not be triggered
+    paths-ignore:
+      - '.github/workflows/*s'
 jobs:
   deploy:
     runs-on: ubuntu-latest
